@@ -81,7 +81,7 @@ app.get('/api/search', (c) => {
 
 
 
-const port = 5000;
+const port = process.env.PORT ? parseInt(process.env.PORT) : 5000;
 console.log("Backend initialized on port " + port);
 
 serve({
