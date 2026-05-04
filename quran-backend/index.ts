@@ -6,7 +6,15 @@ import db from './database.js';
 const app = new Hono();
 
 // Enable CORS so your Next.js frontend can communicate with this server
-app.use('/api/*', cors());
+// Enable CORS so your Next.js frontend can communicate with this server
+app.use('/api/*', cors({
+  origin: [
+    'https://quran-web-aw8u.onrender.com/api',  // ← replace with your actual Vercel URL
+    'http://localhost:3000',         // ← for local development
+  ],
+  allowMethods: ['GET', 'POST', 'OPTIONS'],
+  allowHeaders: ['Content-Type'],
+}));
 
 /**
  * 1. DEBUG ROUTE
