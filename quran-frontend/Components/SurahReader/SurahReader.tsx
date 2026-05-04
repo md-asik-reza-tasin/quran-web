@@ -9,6 +9,8 @@ import {
 import { SURAH_META_MAP } from "../SurahSidebar/surahData";
 import { useSettings } from "../../app/contexts/SettingsContext";
 import SettingsDrawer from "../Settings/SettingsDrawer";
+import { API_BASE_URL } from "../../src/lib/api";
+
 
 /* ─── Types ─── */
 interface AyahData {
@@ -141,7 +143,7 @@ export default function SurahReader({ surahId }: { surahId: number }) {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch(`http://localhost:5000/api/surah/${surahId}`, {
+        const res = await fetch(`${API_BASE_URL}/surah/${surahId}`, {
           signal: controller.signal,
         });
         if (!res.ok) throw new Error("Failed to fetch surah");

@@ -4,6 +4,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Search } from "lucide-react";
 import { SURAH_META_MAP } from "./surahData";
+import { API_BASE_URL } from "../../src/lib/api";
+
+
+
 
 interface SurahFromAPI {
   SURA_num: number;
@@ -53,10 +57,9 @@ function DiamondBadge({
         className={`
           w-[32px] h-[32px] rotate-45 rounded-[7px] flex items-center justify-center
           transition-all duration-300 border
-          ${
-            isActive
-              ? "bg-emerald-500 border-emerald-400 shadow-lg shadow-emerald-500/25"
-              : "bg-gray-50 dark:bg-[#121212] border-gray-200 dark:border-gray-700 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/30 group-hover:border-emerald-200 dark:group-hover:border-emerald-800"
+          ${isActive
+            ? "bg-emerald-500 border-emerald-400 shadow-lg shadow-emerald-500/25"
+            : "bg-gray-50 dark:bg-[#121212] border-gray-200 dark:border-gray-700 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/30 group-hover:border-emerald-200 dark:group-hover:border-emerald-800"
           }
         `}
       >
@@ -96,7 +99,7 @@ export default function SurahSidebar({ onNavigate }: { onNavigate?: () => void }
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch("http://localhost:5000/api/surahs", {
+        const res = await fetch(`${API_BASE_URL}/surahs`, {
           signal: controller.signal,
         });
         if (!res.ok) throw new Error("Failed to fetch surahs");
@@ -210,10 +213,9 @@ export default function SurahSidebar({ onNavigate }: { onNavigate?: () => void }
                   className={`
                     group w-full flex items-center gap-3 px-3 py-3 rounded-xl
                     transition-all duration-200 cursor-pointer text-left
-                    ${
-                      isActive
-                        ? "bg-emerald-50/80 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 shadow-sm"
-                        : "bg-white dark:bg-quran-card border border-transparent hover:bg-gray-50 dark:hover:bg-[#121212] hover:border-gray-200 dark:hover:border-gray-800 hover:shadow-sm"
+                    ${isActive
+                      ? "bg-emerald-50/80 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 shadow-sm"
+                      : "bg-white dark:bg-quran-card border border-transparent hover:bg-gray-50 dark:hover:bg-[#121212] hover:border-gray-200 dark:hover:border-gray-800 hover:shadow-sm"
                     }
                   `}
                 >
@@ -223,9 +225,8 @@ export default function SurahSidebar({ onNavigate }: { onNavigate?: () => void }
                   {/* Center: Name + Translation */}
                   <div className="flex-1 min-w-0">
                     <p
-                      className={`text-sm font-semibold truncate ${
-                        isActive ? "text-emerald-800 dark:text-emerald-400" : "text-gray-800 dark:text-gray-200"
-                      }`}
+                      className={`text-sm font-semibold truncate ${isActive ? "text-emerald-800 dark:text-emerald-400" : "text-gray-800 dark:text-gray-200"
+                        }`}
                     >
                       {surah.nameEn}
                     </p>
@@ -237,9 +238,8 @@ export default function SurahSidebar({ onNavigate }: { onNavigate?: () => void }
                   {/* Right: Arabic Name */}
                   <div className="flex-shrink-0 text-right">
                     <p
-                      className={`text-base leading-tight font-arabic ${
-                        isActive ? "text-emerald-700 dark:text-emerald-500" : "text-gray-700 dark:text-gray-300"
-                      }`}
+                      className={`text-base leading-tight font-arabic ${isActive ? "text-emerald-700 dark:text-emerald-500" : "text-gray-700 dark:text-gray-300"
+                        }`}
                     >
                       {surah.nameAr}
                     </p>
