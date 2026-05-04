@@ -1,9 +1,9 @@
 [build]
-  base = "quran-frontend"
-  publish = ".next"
   command = "npm run build"
+  publish = ".next"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "false"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
