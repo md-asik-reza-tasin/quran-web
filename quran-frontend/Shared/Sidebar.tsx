@@ -12,7 +12,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="grid grid-rows-12 w-[80px] h-screen bg-secondary ">
+    <aside className="grid grid-rows-12 w-[80px] h-screen bg-secondary dark:bg-[#121212] border-r border-transparent dark:border-gray-800 transition-colors duration-200">
       {/* 1. Logo Section */}
       <div className="row-span-2 flex items-start justify-center p-3">
         <Svg variant="logo" size={50} />
@@ -24,7 +24,7 @@ export default function Sidebar() {
           <CustomTooltip key={item.variant} content={item.label} side="right">
             <Link
               href={item.href}
-              className="text-[#8e9aa0] hover:text-primary transition-colors duration-200 flex justify-center group"
+              className="text-[#8e9aa0] dark:text-gray-400 hover:text-primary dark:hover:text-quran-green transition-colors duration-200 flex justify-center group"
             >
               <div className="group-hover:scale-110 transition-transform duration-200">
                 <Svg variant={item.variant as any} size={28} />
