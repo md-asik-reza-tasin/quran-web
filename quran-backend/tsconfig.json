@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    
+    // Keep your other settings
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true
+  }
+}
